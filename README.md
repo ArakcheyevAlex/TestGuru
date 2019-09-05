@@ -1,24 +1,27 @@
-# README
+# TestGuru App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Entities of the TestGuru Application
 
-Things you may want to cover:
+**Users**
 
-* Ruby version
+Records about users of application.
 
-* System dependencies
+**Roles**
 
-* Configuration
+User's roles. What is available for users with some roles (Admins, Students, Observer).
 
-* Database creation
+**Quizes**
 
-* Database initialization
+Information about what questions the test includes, etc.
 
-* How to run the test suite
+**Question**
 
-* Services (job queues, cache servers, search engines, etc.)
+Text, possible answers for each question in the test, rigth option.
 
-* Deployment instructions
+**Answers**
 
-* ...
+User's answers to questions.
+
+**Quizes results**
+
+Place to store results of tests. % of right and wrong questins, scores for the test for each user.
