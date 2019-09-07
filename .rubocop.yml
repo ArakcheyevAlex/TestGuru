@@ -12,3 +12,6 @@ Metrics/PerceivedComplexity:
 
 Metrics/AbcSize:
   Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
