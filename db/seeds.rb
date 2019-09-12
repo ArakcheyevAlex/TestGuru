@@ -63,7 +63,7 @@ Answer.create!(
   ]
 )
 
-User.create!(
+users = User.create!(
   [
     { name: 'Bob' },
     { name: 'Jack' },
@@ -72,4 +72,16 @@ User.create!(
     { name: 'Chuck' },
     { name: 'Alex' }
   ]
+)
+
+TestResult.create!(
+  [
+    { user_id: users.first.id, test_id: tests.first.id, result: 10 },
+    { user_id: users.first.id, test_id: tests.second.id, result: 9 },
+    { user_id: users.first.id, test_id: tests.third.id, result: 12 },
+    { user_id: users.second.id, test_id: tests.first.id, result: 2 },
+    { user_id: users.second.id, test_id: tests.second.id, result: 5 },
+    { user_id: users.second.id, test_id: tests.third.id, result: 9 }
+  ]
+
 )
