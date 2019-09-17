@@ -6,7 +6,7 @@ class Test < ApplicationRecord
   has_many :users, through: :test_results
 
   def self.titles_by_category_name(category_name)
-    joins('JOIN categories ON categories.id = category_id')
+    joins(:category)
       .where(categories: { title: category_name })
       .order(title: :desc)
       .pluck(:title)
