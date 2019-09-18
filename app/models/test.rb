@@ -8,12 +8,15 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: [0, 1]) }
   scope :medium, -> { where(level: 2..4) }
   scope :hard, -> { where('level >= ?', 5) }
-
+  scope :by_category_name, (
+    lambda do |category_name|
+      joins(:category)
+        .where(categories: { title: category_name })
+        .order(title: :desc)
+    end
+  )
 
   def self.titles_by_category_name(category_name)
-    joins(:category)
-      .where(categories: { title: category_name })
-      .order(title: :desc)
-      .pluck(:title)
+    by_category_name(category_name).pluck(:title)
   end
 end
