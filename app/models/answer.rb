@@ -7,9 +7,9 @@ class Answer < ApplicationRecord
 
   scope :correct, -> { where(correct: true) }
 
-  def validate_number_of_answers
-    return if question.answers.count <= 4
+  def validate_answers_count
+    return if question.answers.count < 4
 
-    errors.add(:question, 'too many answers (must be less then 5')
+    errors.add(:question, 'too many answers (must be less then 5)')
   end
 end
