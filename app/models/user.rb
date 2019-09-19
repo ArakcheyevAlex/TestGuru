@@ -6,8 +6,7 @@ class User < ApplicationRecord
            foreign_key: 'author_id',
            dependent: :nullify
 
-  validates :name, presence: true
-  validates :email, presence: true
+  validates :name, :email, presence: true
 
   def tests_by_level(level)
     tests.where(level: level)
