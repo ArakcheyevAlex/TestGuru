@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
+  before_action :set_test, only: %i[index new create]
+
   def index
-    @test = Test.find(params[:test_id])
     @questions = @test.questions
   end
 
@@ -9,12 +10,10 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @test = Test.find(params[:test_id])
     @question = @test.questions.new
   end
 
   def create
-    @test = Test.find(params[:test_id])
     @question = @test.questions.new(question_params)
 
     if @question.save
@@ -35,5 +34,9 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:test_id, :body)
+  end
+
+  def set_test
+    @test = Test.find(params[:test_id])
   end
 end
