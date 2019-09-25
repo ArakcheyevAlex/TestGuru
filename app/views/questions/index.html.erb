@@ -9,8 +9,9 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.body %></td>
+        <td><%= link_to question.body, question_path(question) %></td>
         <td><%= link_to 'Delete question', question, method: :delete, data: { confirm: 'Delete question?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
