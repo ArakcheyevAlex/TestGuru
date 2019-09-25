@@ -1,6 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :set_test, only: %i[index new create]
 
+  rescue_from ActiveRecord::RecordNotFound,
+              with: :rescue_with_question_not_found
+
   def index
     @questions = @test.questions
   end
@@ -38,5 +41,9 @@ class QuestionsController < ApplicationController
 
   def set_test
     @test = Test.find(params[:test_id])
+  end
+
+  def rescue_with_question_not_found
+    render plain: 'Question NOT FOUND!'
   end
 end
