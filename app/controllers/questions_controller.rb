@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:test_id, :body)
+    params.require(:question).permit(:body)
   end
 
   def set_test
