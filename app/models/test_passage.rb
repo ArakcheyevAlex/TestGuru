@@ -7,6 +7,14 @@ class TestPassage < ApplicationRecord
 
   private
 
+  def correct_answers
+    current_question.answers.correct
+  end
+
+  def correct_answer?(answer_ids)
+    correct_answers.ids.sort == Array(answer_ids).map(&:to_i).sort
+  end
+
   def next_question
     if current_question
       test.questions.where('id > ?', current_question.id).first
