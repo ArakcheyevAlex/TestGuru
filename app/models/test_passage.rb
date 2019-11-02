@@ -25,6 +25,14 @@ class TestPassage < ApplicationRecord
     test_result >= SUCCESS_THRESHOLD
   end
 
+  def current_question_number
+    test.questions.index(current_question).to_i + 1
+  end
+
+  def questions_count
+    test.questions.count
+  end
+
   private
 
   def correct_answers
