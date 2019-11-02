@@ -1,4 +1,6 @@
 class TestPassage < ApplicationRecord
+  SUCCESS_THRESHOLD = 85.0
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
@@ -13,6 +15,14 @@ class TestPassage < ApplicationRecord
 
   def completed?
     current_question.nil?
+  end
+
+  def test_result
+    (correct_questions.to_f / test.questions.count * 100).round(2)
+  end
+
+  def test_passed?
+    test_result >= SUCCESS_THRESHOLD
   end
 
   private
