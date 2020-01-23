@@ -6,6 +6,8 @@ class User < ApplicationRecord
            foreign_key: 'author_id',
            dependent: :nullify
 
+  has_secure_password
+
   validates :name, :email, presence: true
 
   def tests_by_level(level)
