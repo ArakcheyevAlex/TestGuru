@@ -10,9 +10,7 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <p>Welcome, <b><%= current_user.email %></b> Guru</p>
-    <% end %>
+    <%= render 'layouts/navigation' %>
 
     <%= yield %>
 
