@@ -1,5 +1,7 @@
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= render 'shared/errors', resource: @user %>
+  <% if flash[:alert] %>
+    <%= content_tag :p, flash[:alert], class: 'flash alert' %>
+  <% end %>
 
   <div class="field">
     <%= f.label :name %>
