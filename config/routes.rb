@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
 
   resources :tests do
-    resources :questions, shallow: true, except: :index
+    resources :questions, shallow: true, except: :index do
+      resources :answers, shallow: true, except: :index
+    end
 
     post :start, on: :member
   end
