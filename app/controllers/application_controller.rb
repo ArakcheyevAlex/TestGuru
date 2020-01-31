@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
       user_params.permit(:name, :email, :password, :password_confirmation)
     end
   end
+
+  def after_sign_in_path_for(user)
+    user.admin? ? admin_tests_path : tests_path
+  end
 end
