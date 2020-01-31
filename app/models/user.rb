@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable
   has_many :test_passages
   has_many :tests, through: :test_passages
   has_many :author_tests,
@@ -6,9 +11,7 @@ class User < ApplicationRecord
            foreign_key: 'author_id',
            dependent: :nullify
 
-  has_secure_password
-
-  validates :name, presence: true
+  validates :first_name, presence: true
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
                     format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -19,5 +22,9 @@ class User < ApplicationRecord
 
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test: test)
+  end
+
+  def admin?
+    is_a?(Admin)
   end
 end

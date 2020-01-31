@@ -1,0 +1,34 @@
+<p>
+  <strong>Title:</strong>
+  <%= @test.title %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @test.level %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @test.category.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @test.author.first_name %> <%= @test.author&.last_name %>
+</p>
+
+<h2>Test's questions</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th colspan = 2>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @test.questions %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Tests', admin_tests_path %>
