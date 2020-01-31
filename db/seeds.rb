@@ -12,12 +12,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(
   [
-    { name: 'Bob' },
-    { name: 'Jack' },
-    { name: 'Michael' },
-    { name: 'John' },
-    { name: 'Chuck' },
-    { name: 'Alex' }
+    {
+      name: 'Bob',
+      email: 'bob@testguru.com',
+      password: '11111111',
+      type: 'Admin'
+    },
+    {
+      name: 'Jack',
+      email: 'jack@testguru.com',
+      password: '11111111',
+      type: 'User'
+    },
+    {
+      name: 'Michael',
+      email: 'michael@testguru.com',
+      password: '11111111',
+      type: 'User'
+    }
   ]
 )
 
@@ -74,13 +86,13 @@ Answer.create!(
   ]
 )
 
-TestResult.create!(
+TestPassage.create!(
   [
-    { user: User.first, test: Test.first, result: 10 },
-    { user: User.first, test: Test.second, result: 9 },
-    { user: User.first, test: Test.third, result: 12 },
-    { user: User.second, test: Test.first, result: 2 },
-    { user: User.second, test: Test.second, result: 5 },
-    { user: User.second, test: Test.third, result: 9 }
+    { user: User.first, test: Test.first, correct_questions: 3 },
+    { user: User.first, test: Test.second, correct_questions: 9 },
+    { user: User.first, test: Test.third, correct_questions: 12 },
+    { user: User.second, test: Test.first, correct_questions: 2 },
+    { user: User.second, test: Test.second, correct_questions: 5 },
+    { user: User.second, test: Test.third, correct_questions: 9 }
   ]
 )
