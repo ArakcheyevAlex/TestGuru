@@ -11,7 +11,7 @@ class User < ApplicationRecord
            foreign_key: 'author_id',
            dependent: :nullify
 
-  validates :name, presence: true
+  validates :first_name, presence: true
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
                     format: { with: URI::MailTo::EMAIL_REGEXP }

@@ -3,7 +3,7 @@
   <td><%= test.level %></td>
   <td><%= test.category.title %></td>
   <td><%= questions_count(test) %></td>
-  <td><%= test.author.name %></td>
+  <td><%= test.author.first_name %> <%= test.author&.last_name %></td>
   <td><%= link_to 'Show', admin_test_path(test) %></td>
   <td><%= link_to 'Edit', edit_admin_test_path(test) %></td>
   <td><%= link_to 'Delete', admin_test_path(test), method: :delete,
