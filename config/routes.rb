@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root 'tests#index'
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 
   resources :tests do
     post :start, on: :member
